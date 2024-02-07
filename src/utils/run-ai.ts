@@ -4,7 +4,7 @@ export default async function runAI(binding: any, message: string) {
 	const ai = new Ai(binding);
 
 	const messages = [
-		{ role: 'system', content: 'You are a friendly assistent' },
+		{ role: 'system', content: 'You are a friendly assistant' },
 		{ role: 'user', content: message },
 	];
 
