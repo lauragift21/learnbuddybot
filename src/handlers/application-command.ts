@@ -37,12 +37,11 @@ export default async function handleApplicationCommand(interaction: APIApplicati
 		(async () => {
 			const start = Date.now();
 			const response = await runAI(env.AI, option.value);
-			console.log(response);
-			console.log(...response);
-			console.log(response.message);
+			const responseText = response.response;
+			console.log(responseText);
 			const time = Date.now() - start;
 			const messagePayload = JSON.stringify({
-				content: `Result for your prompt: ${response}\nProcessing time: ${Math.round(time / 100) / 10}s`,
+				content: `Result for your prompt: ${responseText}\nProcessing time: ${Math.round(time / 100) / 10}s`,
 				components: [
 					{
 						type: ComponentType.ActionRow,
@@ -60,6 +59,8 @@ export default async function handleApplicationCommand(interaction: APIApplicati
 					},
 				],
 			} as RESTPostAPIWebhookWithTokenJSONBody);
+
+			console.log(messagePayload);
 
 			console.log('RETURNING RESPONSE');
 			const res = await fetch(`${RouteBases.api}${Routes.webhookMessage(env.appID, interaction.token, '@original')}`, {

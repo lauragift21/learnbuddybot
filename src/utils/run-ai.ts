@@ -13,6 +13,7 @@ export default async function runAI(binding: any, message: string) {
 	});
 
 	console.log('AI run was successful!');
+	console.log('Response:', response);
 
 	return response;
 }

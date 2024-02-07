@@ -33,13 +33,13 @@ export default async function handleModalSubmit(interaction: APIModalSubmitInter
 		(async () => {
 			const start = Date.now();
 			const response = await runAI(env.AI, prompt);
-			console.log(response);
-			console.log(...response);
-			console.log(response.message);
+			console.log(response.response)
+			const responseText = response.response;
+			console.log(responseText);
 			const time = Date.now() - start;
 
 			const messagePayload = JSON.stringify({
-				content: `Result for your prompt: ${response}\nProcessing time: ${Math.round(time / 100) / 10}s`,
+				content: `Result for your prompt: ${responseText}\nProcessing time: ${Math.round(time / 100) / 10}s`,
 				components: [
 					{
 						type: ComponentType.ActionRow,
@@ -58,6 +58,8 @@ export default async function handleModalSubmit(interaction: APIModalSubmitInter
 				],
 			} as RESTPostAPIWebhookWithTokenJSONBody);
 
+			console.log(messagePayload);
+
 			console.log('RETURNING RESPONSE');
 			const res = await fetch(`${RouteBases.api}${Routes.webhookMessage(env.appID, interaction.token, '@original')}`, {
 				method: 'PATCH',
@@ -66,7 +68,7 @@ export default async function handleModalSubmit(interaction: APIModalSubmitInter
 					'Content-Type': 'application/json',
 				},
 			});
-			console.log(`Response: ${res}`)
+			console.log(`Response: ${res}`);
 			console.log(`RESPONSE STATUS: ${res.status}`);
 
 			if (!res.ok) {
