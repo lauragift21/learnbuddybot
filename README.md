@@ -4,6 +4,8 @@ LearnBuddy is a Discord bot designed to facilitate learning within a Discord ser
 
 This project draws inspiration from [Skye-31's Workers AI Bot](https://github.com/Skye-31/workers-ai-bot), showcasing the potential of Cloudflare's AI capabilities in enhancing user engagement on Discord.
 
+![Discord screenshot](./img.png)
+
 ## Technology Stack
 
 - **Cloudflare Workers:** Utilizes Cloudflare's edge computing platform for deploying and running the bot with low latency and high reliability.

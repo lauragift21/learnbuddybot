@@ -1,5 +1,4 @@
 import {
-	APIModalSubmitDMInteraction,
 	APIModalSubmitInteraction,
 	ButtonStyle,
 	ComponentType,
